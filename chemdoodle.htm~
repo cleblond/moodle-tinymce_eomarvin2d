@@ -1,0 +1,78 @@
+<!--these four are required by the ChemDoodle Web Components library-->
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+<!--
+<script type="text/javascript" src="../../tiny_mce_popup.js?v={tinymce_version}"></script>
+<script type="text/javascript" src="js/dialog.js?v={tinymce_version}"></script>
+-->
+
+<link rel="stylesheet" href="http://www.easyochem.com/chemdoodle/ChemDoodleWeb.css" type="text/css">
+<script type="text/javascript" src="http://www.easyochem.com/chemdoodle/ChemDoodleWeb-libs.js"></script>
+<script type="text/javascript" src="http://www.easyochem.com/chemdoodle/ChemDoodleWeb.js"></script>
+<!--these three are required by the SketcherCanvas plugin-->
+<link rel="stylesheet" href="http://www.easyochem.com/chemdoodle/sketcher/jquery-ui-1.9.2.custom.css" type="text/css">
+<script type="text/javascript" src="http://www.easyochem.com/chemdoodle/sketcher/jquery-ui-1.9.2.custom.min.js"></script>
+<script type="text/javascript" src="http://www.easyochem.com/chemdoodle/sketcher/ChemDoodleWeb-sketcher.js"></script>
+<!-- <script type="text/javascript" src="../../tiny_mce_popup.js?v={tinymce_version}"></script> -->
+
+
+
+
+
+<span onclick="alert(ChemDoodle.writeRXN(sketcher.getMolecules()));">
+<a class="small-button smallblue" href="javascript:void(0);">
+<span>Generate MOLFile</span>
+</a>
+</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  // changes the default JMol color of hydrogen to black so it appears on white backgrounds
+  ChemDoodle.ELEMENT['H'].jmolColor = 'black';
+  // darkens the default JMol color of sulfur so it appears on white backgrounds
+  ChemDoodle.ELEMENT['S'].jmolColor = '#B9A130';
+  // initializes the SketcherCanvas
+  var sketcher = new ChemDoodle.SketcherCanvas('sketcher', 800, 400, {useServices:true, oneMolecule:false});
+  // sets terminal carbon labels to display
+  sketcher.specs.atoms_displayTerminalCarbonLabels_2D = true;
+  // sets atom labels to be colored by JMol colors, which are easy to recognize
+  sketcher.specs.atoms_useJMOLColors = true;
+  // enables overlap clear widths, so that some depth is introduced to overlapping bonds
+  sketcher.specs.bonds_clearOverlaps_2D = true;
+  // sets the shape color to improve contrast when drawing figures
+  sketcher.specs.shapes_color = 'c10000';
+  // because we do not load any content, we need to repaint the sketcher, otherwise we would just see an empty area with the toolbar
+  // however, you can instead use one of the Canvas.load... functions to pre-populate the canvas with content, then you don't need to call repaint
+
+
+  sketcher.repaint();
+</script>
+
+
+<script type="text/javascript" src="../../tiny_mce_popup_src.js?v={tinymce_version}"></script>
+<script type="text/javascript" src="js/dialog.js?v={tinymce_version}"></script>
+
+
+<form onsubmit="ExampleDialog.insert();return false;" action="#">
+	<p>Here is a example dialog.</p>
+	<p>Selected text: <input id="someval" name="someval" type="text" class="text"/></p>
+	<p>Custom arg: <input id="somearg" name="somearg" type="text" class="text" /></p>
+
+	<div class="mceActionPanel">
+		<input type="button" id="insert" name="insert" value="{#insert}" onclick="ExampleDialog.insert();" />
+		<input type="button" id="cancel" name="cancel" value="{#cancel}" onclick="tinyMCEPopup.close();" />
+	</div>
+</form>
+
+
