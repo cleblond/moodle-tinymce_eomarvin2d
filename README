@@ -1,5 +1,5 @@
 Installation:
-1) Place contents of this directory in your moodle/lib/editor/tinymce/plugin directory.
+1) Place contents of this directory in your moodle/lib/editor/tinymce/plugins directory.
 2) Download ChemAxons "Marvin for Web Developers" and install in directory called marvin at your web root.
 If you don't want to install there make change to marvin.php.
 3) If you haven't done so already download and install filter moodle-filter_marvintinymce.
